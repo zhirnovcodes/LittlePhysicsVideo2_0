@@ -1,0 +1,58 @@
+---
+description: Unity ECS C# naming and namespace conventions
+globs: **/*.cs
+alwaysApply: false
+---
+
+# Unity ECS C# Conventions
+
+Target this project's C# code for Unity `6000.4.x` and Entities/ECS `6.4.0`.
+
+- Component types must end with `Component`.
+- System types must end with `System`.
+- Authoring types must end with `Authoring`.
+- Job types must end with `Job`.
+- Use PascalCase for all type members: fields, properties, and methods (public or private), and constants.
+- Use camelCase only for local variables and parameters inside method bodies.
+- Exception: Unity/ECS interface implementations and fixed API callbacks (e.g. `OnCreate`, `OnUpdate`, `OnDestroy`, `Execute`) keep their Unity-required names.
+- Local variable and parameter names must be 1–4 descriptive words. Avoid single-letter names and abbreviations. Exception: loop iterators (`i`, `j`, etc.).
+
+Examples:
+
+```csharp
+public struct MoveSpeedComponent : IComponentData
+{
+    public float Value;
+}
+
+public partial struct MovementSystem : ISystem
+{
+    private float cachedDeltaTime;
+
+    public void OnUpdate(ref SystemState state)
+    {
+        UpdateMovement(ref state);
+    }
+
+    private void UpdateMovement(ref SystemState state)
+    {
+        float scaledDelta = cachedDeltaTime * 2f;
+    }
+}
+```
+
+Always wrap the body of every `if`, `else`, `for`, `foreach`, and `while` clause in braces `{}` on their own lines, even when the body is a single statement.
+
+```csharp
+// correct
+if (!colliding)
+{
+    return;
+}
+
+// incorrect
+if (!colliding)
+    return;
+```
+
+When generating or updating ECS code, prefer APIs and patterns compatible with Unity Entities `6.4.0`.
