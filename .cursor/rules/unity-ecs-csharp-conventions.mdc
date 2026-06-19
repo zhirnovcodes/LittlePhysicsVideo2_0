@@ -8,6 +8,8 @@ alwaysApply: false
 
 Target this project's C# code for Unity `6000.4.x` and Entities/ECS `6.4.0`.
 
+- **Never** wrap code in a `namespace` block. All types are declared at the top level with no namespace.
+
 - Component types must end with `Component`.
 - System types must end with `System`.
 - Authoring types must end with `Authoring`.
