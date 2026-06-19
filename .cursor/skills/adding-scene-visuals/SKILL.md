@@ -96,22 +96,14 @@ namespace LittlePhysics
             // Scale the ball in so it appears on screen
             await SpawnedBall.transform.DOScale(Vector3.one, ScaleInDuration).ToUniTask();
 
-            // Wait for the user to press Space to continue, or Esc to abort
-            bool next = await controller.WaitNextClicked();
-            if (!next)
-            {
-                return;
-            }
+            // Wait for the user to press Space to continue
+            _ = await controller.WaitNextClicked();
 
             // Drop the ball down to the ground
             await SpawnedBall.transform.DOMove(GroundPoint.position, FallDuration).ToUniTask();
 
-            // Wait for the user to press Space to continue, or Esc to abort
-            next = await controller.WaitNextClicked();
-            if (!next)
-            {
-                return;
-            }
+            // Wait for the user to press Space to continue
+            _ = await controller.WaitNextClicked();
 
             // Squash the ball on impact
             await SquashOnImpact();
@@ -134,7 +126,7 @@ namespace LittlePhysics
 ## Key Patterns
 
 - **Sequences**: use `DOTween.Sequence().Append(...).Join(...).AppendInterval(...).ToUniTask()` for parallel/chained tweens — still one awaited line
-- **Gating**: always `bool next = await controller.WaitNextClicked(); if (!next) { return; }` — never skip the null check
+- **Gating**: always `_ = await controller.WaitNextClicked();` — discard the return value
 - **No coroutines**: never use `IEnumerator`, `StartCoroutine`, or `yield return` in visual scripts
 - **No callbacks**: never use `.OnComplete(...)` — await the tween instead
 
