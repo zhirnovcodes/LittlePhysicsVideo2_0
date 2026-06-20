@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundSpawnAuthoring
   MapGrid: {fileID: 2134886049}
-  GridCellCount: {x: 25, y: 25, z: 25}
+  GridCellCount: {x: 12, y: 12, z: 12}
   PairPositionOffset: 0.5
   Prefab1: {fileID: 7371109622193385738, guid: 89496d760e2598c43aa96d9d80576f34, type: 3}
   Prefab2: {fileID: 3397443630619186287, guid: 19f70c77aee6ae44496b0b382d64fbf4, type: 3}
@@ -256,18 +256,18 @@ MonoBehaviour:
       x: 0
       y: 0
     MaxEntityCount: 60000
-    MaxDynamicsInCells: 4
-    MaxTriggersInCells: 4
+    MaxDynamicsInCells: 16
+    MaxTriggersInCells: 16
     MaxStaticInCells: 0
-    MaxCellPerEntity: 4
-    MaxCellPerEntityX2: 4
-    MaxCellPerEntityX4: 4
-    MaxPairPerEntity: 4
-    MaxPairPerEntityX2: 4
-    MaxPairPerEntityX4: 4
-    MaxCollisionsPerEntity: 4
-    MaxCollisionsPerEntityX2: 4
-    MaxCollisionsPerEntityX4: 4
+    MaxCellPerEntity: 8
+    MaxCellPerEntityX2: 8
+    MaxCellPerEntityX4: 8
+    MaxPairPerEntity: 32
+    MaxPairPerEntityX2: 32
+    MaxPairPerEntityX4: 32
+    MaxCollisionsPerEntity: 32
+    MaxCollisionsPerEntityX2: 32
+    MaxCollisionsPerEntityX4: 32
   CollisionCheckSettings:
     CheckDynamicVsStatic: 1
     CheckDynamicVsDynamic: 1
@@ -377,7 +377,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134886048}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellSize: {x: 2, y: 2, z: 2}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
